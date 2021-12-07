@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import CommonButton from "./CommonButton";
 import InputNoteText from "./InputNoteText";
 import ListItem from "./ListItem";
@@ -8,12 +8,19 @@ import { MdOutlineNoteAdd } from "react-icons/md";
 import { BsFillPencilFill } from "react-icons/bs";
 import { MdDelete } from "react-icons/md";
 import { IoSettingsSharp } from "react-icons/io5";
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 export default function Layout() {
+  const [isNoteOpen, setIsNoteOpen] = useState(false);
+
+  const handleClick = () => {
+    setIsNoteOpen(!isNoteOpen);
+  };
+
   return (
     <div className="md:flex">
       {/* Left section */}
-      <div>
+      <div className={isNoteOpen && "hidden"}>
         <div className="flex justify-between px-4 py-3 shadow">
           <div className="flex items-center space-x-8">
             <button className="lg:-mr-4">
@@ -28,7 +35,7 @@ export default function Layout() {
             <MdOutlineNoteAdd className="w-5 h-5 mx-auto text-white" />
           </button>
         </div>
-        <ListItem />
+        <ListItem handleClick={handleClick} />
         <ListItem />
         <ListItem />
         <ListItem />
@@ -36,9 +43,12 @@ export default function Layout() {
       </div>
 
       {/* Right section */}
-      <div className="hidden">
-        <div className="flex">
-          <div className="flex justify-end w-full gap-2 p-2 shadow">
+      <div className={!isNoteOpen && "hidden"}>
+        <div className="flex justify-between w-full p-2 shadow">
+          <button onClick={handleClick}>
+            <IoMdArrowRoundBack className="w-5 h-5" />
+          </button>
+          <div className="flex justify-end gap-2">
             <CommonButton IconComponent={<BsFillPencilFill />} title="edit" />
             <CommonButton IconComponent={<MdDelete />} title="delete" />
             <CommonButton IconComponent={<IoSettingsSharp />} title="settings" />
