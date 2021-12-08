@@ -26,11 +26,11 @@ export default function Layout() {
   };
 
   return (
-    <div className="flex w-screen h-full md:flex">
+    <div className="flex w-screen h-screen md:flex">
       {/* Left section */}
-      <div className={`absolute z-10 md:w-4/12 h-full w-full ${isNoteOpen ? "" : ""}`}>
-        <div className="relative z-30 flex items-center justify-between py-2 pl-2 pr-4 shadow">
-          <div className="flex items-center space-x-4">
+      <div className={`z-10 md:w-4/12 w-full h-screen ${isNoteOpen ? "" : ""}`}>
+        <div className="fixed left-0 z-50 items-center justify-between block py-2 pl-2 pr-4 bg-white shadow top-6">
+          <div className="flex items-center space-x-4 ">
             <button className="p-3 lg:-mr-2" onClick={handleBurgerBtnClick}>
               <GiHamburgerMenu className={isFoldersSectionOpen ? `hidden` : ""} />
               <GrClose className={`${!isFoldersSectionOpen ? "hidden" : ""}`} />
@@ -45,10 +45,10 @@ export default function Layout() {
           </button>
         </div>
 
-        <div className="relative z-20 h-full border-gray-200 md:border-r">
+        <div className="z-20 h-screen border-gray-200 md:border-r">
           {/* Folders section */}
           <div
-            className={`absolute flex flex-col items-start w-full h-full transition-all ease-out shadow duration-700 bg-white z-10 ${
+            className={`absolute flex flex-col items-start w-full h-full transition-all ease-out shadow duration-700 bg-white z-10 overflow-y-hidden ${
               !isFoldersSectionOpen ? "-left-full" : "left-0"
             }`}
           >
