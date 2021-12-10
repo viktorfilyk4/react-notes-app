@@ -16,6 +16,7 @@ import FolderListItem from "./FolderListItem";
 export default function Layout() {
   const [isNoteOpen, setNoteIsOpen] = useState(false);
   const [isFoldersSectionOpen, setFoldersSectionIsOpen] = useState(false);
+  const [isNavbarClicked, setNavbarClicked] = useState(false);
 
   const handleListItemClick = () => {
     setNoteIsOpen(!isNoteOpen);
@@ -26,7 +27,11 @@ export default function Layout() {
   };
 
   return (
-    <div className={`relative flex w-screen h-screen overflow-hidden md:flex ${isFoldersSectionOpen ? "overflow-y-hidden" : ""}`}>
+    <div
+      className={`relative flex w-screen h-screen overflow-hidden md:flex ${
+        isFoldersSectionOpen ? "overflow-y-hidden" : ""
+      }`}
+    >
       {/* Left section */}
       <div className={`md:w-4/12 w-full ${isNoteOpen ? "" : ""}`}>
         {/* Navbar */}
@@ -62,7 +67,11 @@ export default function Layout() {
           </div>
 
           {/* List items section */}
-          <div className={`h-full overflow-y-scroll pb-20 ${isFoldersSectionOpen ? "opacity-50 bg-grey-800" : ""}`}>
+          <div
+            className={`h-full overflow-y-scroll pb-20 ${
+              isFoldersSectionOpen ? "opacity-50 bg-grey-800" : ""
+            }`}
+          >
             <ListItem handleClick={handleListItemClick} />
             <ListItem />
             <ListItem />
@@ -80,11 +89,15 @@ export default function Layout() {
 
       {/* Right section */}
       <div
-        className={`absolute w-full z-20 bg-white md:block md:w-8/12 transition-all ease-out duration-700 shadow ${
+        className={`absolute w-full z-20 bg-white md:block md:w-8/12 transition-all ease-out duration-700 shadow md:right-0 ${
           !isNoteOpen ? "-right-full" : "right-0"
         }`}
       >
-        <div className="flex justify-between w-full p-2 pr-4 shadow md:justify-end">
+        <div
+          className={`flex justify-between w-full p-2 pr-4 shadow md:justify-end md:relative md:transition-all ${
+            isNavbarClicked ? "md:-right-0" : ""
+          }`}
+        >
           <button onClick={handleListItemClick} className="p-2 md:hidden">
             <IoMdArrowRoundBack className="w-5 h-5" />
           </button>
