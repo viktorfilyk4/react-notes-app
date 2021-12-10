@@ -9,7 +9,7 @@ export default function InputNoteText() {
   };
 
   return (
-    <div className="h-screen p-4">
+    <div className="h-screen p-4 overflow-y-scroll pb-20">
       <div className="flex items-start justify-between">
         <div className="flex flex-col items-start gap-2 md:flex-row md:items-center">
           <input

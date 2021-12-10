@@ -26,9 +26,10 @@ export default function Layout() {
   };
 
   return (
-    <div className={`relative flex w-screen h-screen overflow-x-hidden md:flex ${isFoldersSectionOpen ? "overflow-y-hidden" : ""} md:overflow-y-hidden`}>
+    <div className={`relative flex w-screen h-screen overflow-hidden md:flex ${isFoldersSectionOpen ? "overflow-y-hidden" : ""}`}>
       {/* Left section */}
-      <div className={`md:w-4/12 w-full h-screen ${isNoteOpen ? "" : ""}`}>
+      <div className={`md:w-4/12 w-full ${isNoteOpen ? "" : ""}`}>
+        {/* Navbar */}
         <div className="relative z-20 flex items-center justify-between w-full py-2 pl-2 pr-4 bg-white shadow">
           <div className="flex items-center space-x-4">
             <button className="flex items-center gap-6 p-3 lg:-mr-2" onClick={handleBurgerBtnClick}>
@@ -45,7 +46,8 @@ export default function Layout() {
           </button>
         </div>
 
-        <div className="relative w-full h-screen border-gray-200 md:border-r">
+        {/* Under navbar section */}
+        <div className="relative w-full h-full border-gray-200 md:border-r ">
           {/* Folders section */}
           <div
             className={`absolute flex flex-col items-start w-full h-full transition-all ease-out shadow duration-700 bg-white z-10 ${
@@ -60,7 +62,7 @@ export default function Layout() {
           </div>
 
           {/* List items section */}
-          <div className={`h-full ${isFoldersSectionOpen ? "opacity-50 bg-grey-800" : ""} md:overflow-y-scroll`}>
+          <div className={`h-full overflow-y-scroll pb-20 ${isFoldersSectionOpen ? "opacity-50 bg-grey-800" : ""}`}>
             <ListItem handleClick={handleListItemClick} />
             <ListItem />
             <ListItem />
