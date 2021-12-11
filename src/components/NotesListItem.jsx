@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AiOutlineStar } from "react-icons/ai";
 import { AiFillStar } from "react-icons/ai";
 
-export default function ListItem({ handleClick }) {
+export default function NotesListItem({ handleClick }) {
   const [isFavorite, setAsFavorite] = useState(false);
 
   const handleFavoriteBtnClick = (e) => {

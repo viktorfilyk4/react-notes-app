@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 
-export default function InputNoteText() {
+export default function NoteInputsSection() {
   const [isFavorite, setAsFavorite] = useState(false);
 
   const handleFavoriteBtnClick = () => {

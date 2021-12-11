@@ -1,0 +1,25 @@
+import React from "react";
+import { MdDelete } from "react-icons/md";
+import { IoSettingsSharp } from "react-icons/io5";
+import { IoMdArrowRoundBack } from "react-icons/io";
+import CommonButton from "./CommonButton";
+
+function NoteNavbar() {
+  return (
+    <div
+      className={`flex justify-between w-full p-2 pr-4 shadow md:justify-end md:relative md:transition-all ${
+        false ? "md:-right-0" : ""
+      }`}
+    >
+      <button onClick={() => {}} className="p-2 md:hidden">
+        <IoMdArrowRoundBack className="w-5 h-5" />
+      </button>
+      <div className="flex justify-end gap-2">
+        <CommonButton IconComponent={<MdDelete />} title="delete" />
+        <CommonButton IconComponent={<IoSettingsSharp />} title="settings" />
+      </div>
+    </div>
+  );
+}
+
+export default NoteNavbar;
