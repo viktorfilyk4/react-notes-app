@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { MdDelete } from "react-icons/md";
 import { IoSettingsSharp } from "react-icons/io5";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import CommonButton from "./CommonButton";
+import { LayoutContext } from "../context";
 
 function NoteNavbar() {
+  const [isNoteWindowOpen, setNoteWindowOpen] = useContext(LayoutContext);
+
   return (
     <div
       className={`flex justify-between w-full p-2 pr-4 shadow md:justify-end md:relative md:transition-all ${
         false ? "md:-right-0" : ""
       }`}
     >
-      <button onClick={() => {}} className="p-2 md:hidden">
+      <button onClick={() => setNoteWindowOpen(!isNoteWindowOpen)} className="p-2 md:hidden">
         <IoMdArrowRoundBack className="w-5 h-5" />
       </button>
       <div className="flex justify-end gap-2">

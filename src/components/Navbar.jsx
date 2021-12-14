@@ -4,11 +4,11 @@ import { FaSearch } from "react-icons/fa";
 import { MdPostAdd } from "react-icons/md";
 import { GrClose } from "react-icons/gr";
 
-function Navbar() {
+function Navbar({ isFoldersSectionOpen, setFoldersSectionOpen }) {
   return (
     <div className="relative z-20 flex items-center justify-between w-full py-2 pl-2 pr-4 bg-white shadow">
       <div className="flex items-center space-x-4">
-        <button className="flex items-center gap-6 p-3 lg:-mr-2" onClick={() => {}}>
+        <button className="flex items-center gap-6 p-3 lg:-mr-2" onClick={() => setFoldersSectionOpen(!isFoldersSectionOpen)}>
           <GiHamburgerMenu className={false ? `hidden` : ""} />
           <GrClose className={`${!false ? "hidden" : ""}`} />
           <span className="hidden text-lg leading-4 lg:inline-block">All notes</span>

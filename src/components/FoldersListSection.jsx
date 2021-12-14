@@ -3,11 +3,11 @@ import { FiFolder } from "react-icons/fi";
 import { AiOutlineStar } from "react-icons/ai";
 import FoldersListItem from "./FoldersListItem";
 
-function FoldersListSection() {
+function FoldersListSection({ isFoldersSectionOpen }) {
   return (
     <div
       className={`absolute flex flex-col items-start w-full h-full transition-all ease-out shadow duration-700 bg-white z-10 ${
-        !false ? "-left-full" : "left-0"
+        isFoldersSectionOpen ? "left-0" : "-left-full"
       }`}
     >
       <FoldersListItem title="All notes" IconComponent={<FiFolder className="w-5 h-5" />} />

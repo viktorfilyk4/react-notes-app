@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import NotesListItem from "./NotesListItem";
 
 function NotesListSection() {
+  const [state, setstate] = useState(false);
+
   return (
     <div
       className={`h-full overflow-y-scroll pb-20 ${

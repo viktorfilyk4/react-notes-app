@@ -7,23 +7,30 @@ import ListSectionsContainer from "./components/ListSectionsContainer";
 import NoteNavbar from "./components/NoteNavbar";
 import RightSectionContainer from "./components/RightSectionContainer";
 import LeftSectionContainer from "./components/LeftSectionContainer";
+import { useState } from "react";
+import { LayoutContext } from "./context";
 
 function App() {
-  return (
-    <Layout>
-      <LeftSectionContainer>
-        <Navbar />
-        <ListSectionsContainer>
-          <FoldersListSection />
-          <NotesListSection />
-        </ListSectionsContainer>
-      </LeftSectionContainer>
+  const [isNoteWindowOpen, setNoteWindowOpen] = useState(false);
+  const [isFoldersSectionOpen, setFoldersSectionOpen] = useState(false);
 
-      <RightSectionContainer>
-        <NoteNavbar />
-        <NoteInputsSection />
-      </RightSectionContainer>
-    </Layout>
+  return (
+    <LayoutContext.Provider value={[isNoteWindowOpen, setNoteWindowOpen]}>
+      <Layout>
+        <LeftSectionContainer>
+          <Navbar {...{ isFoldersSectionOpen, setFoldersSectionOpen }} />
+          <ListSectionsContainer>
+            <FoldersListSection {...{ isFoldersSectionOpen }} />
+            <NotesListSection />
+          </ListSectionsContainer>
+        </LeftSectionContainer>
+
+        <RightSectionContainer>
+          <NoteNavbar />
+          <NoteInputsSection />
+        </RightSectionContainer>
+      </Layout>
+    </LayoutContext.Provider>
   );
 }
 
