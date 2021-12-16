@@ -1,9 +1,12 @@
-import React from "react";
+import React, {useContext} from "react";
 import { FiFolder } from "react-icons/fi";
 import { AiOutlineStar } from "react-icons/ai";
 import FoldersListItem from "./FoldersListItem";
+import { FoldersContext } from "../context";
 
-function FoldersListSection({ isFoldersSectionOpen }) {
+function FoldersListSection({}) {
+  const [isFoldersSectionOpen] = useContext(FoldersContext);
+  
   return (
     <div
       className={`absolute flex flex-col items-start w-full h-full transition-all ease-out shadow duration-700 bg-white z-10 ${

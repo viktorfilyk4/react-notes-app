@@ -8,21 +8,26 @@ import NoteNavbar from "./components/NoteNavbar";
 import RightSectionContainer from "./components/RightSectionContainer";
 import LeftSectionContainer from "./components/LeftSectionContainer";
 import { useState } from "react";
-import { LayoutContext } from "./context";
+import { LayoutContext, NotesContext, FoldersContext } from "./context";
 
 function App() {
   const [isNoteWindowOpen, setNoteWindowOpen] = useState(false);
   const [isFoldersSectionOpen, setFoldersSectionOpen] = useState(false);
+  const [showOnlyFavoriteNotes, setShowOnlyFavoriteNotes] = useState(false);
 
   return (
     <LayoutContext.Provider value={[isNoteWindowOpen, setNoteWindowOpen]}>
       <Layout>
         <LeftSectionContainer>
-          <Navbar {...{ isFoldersSectionOpen, setFoldersSectionOpen }} />
-          <ListSectionsContainer>
-            <FoldersListSection {...{ isFoldersSectionOpen }} />
-            <NotesListSection />
-          </ListSectionsContainer>
+          <NotesContext.Provider value={[showOnlyFavoriteNotes, setShowOnlyFavoriteNotes]}>
+            <FoldersContext.Provider value={[isFoldersSectionOpen, setFoldersSectionOpen]}>
+              <Navbar />
+              <ListSectionsContainer>
+                <FoldersListSection />
+                <NotesListSection />
+              </ListSectionsContainer>
+            </FoldersContext.Provider>
+          </NotesContext.Provider>
         </LeftSectionContainer>
 
         <RightSectionContainer>

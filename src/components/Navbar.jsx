@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaSearch } from "react-icons/fa";
 import { MdPostAdd } from "react-icons/md";
 import { GrClose } from "react-icons/gr";
+import { FoldersContext } from "../context";
 
-function Navbar({ isFoldersSectionOpen, setFoldersSectionOpen }) {
+function Navbar({}) {
+  const [isFoldersSectionOpen, setFoldersSectionOpen] = useContext(FoldersContext);
+
   return (
     <div className="relative z-20 flex items-center justify-between w-full py-2 pl-2 pr-4 bg-white shadow">
       <div className="flex items-center space-x-4">
-        <button className="flex items-center gap-6 p-3 lg:-mr-2" onClick={() => setFoldersSectionOpen(!isFoldersSectionOpen)}>
+        <button
+          className="flex items-center gap-6 p-3 lg:-mr-2"
+          onClick={() => setFoldersSectionOpen(!isFoldersSectionOpen)}
+        >
           <GiHamburgerMenu className={false ? `hidden` : ""} />
           <GrClose className={`${!false ? "hidden" : ""}`} />
           <span className="hidden text-lg leading-4 lg:inline-block">All notes</span>

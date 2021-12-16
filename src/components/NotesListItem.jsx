@@ -3,14 +3,15 @@ import { AiOutlineStar } from "react-icons/ai";
 import { AiFillStar } from "react-icons/ai";
 import { LayoutContext } from "../context";
 
-export default function NotesListItem({}) {
-  const [isFavorite, setAsFavorite] = useState(false);
+export default function NotesListItem({ data }) {
+  const { title, text, isFavorite } = data;
+  // const [isFavorite, setAsFavorite] = useState(false);
 
   const [isNoteWindowOpen, setNoteWindowOpen] = useContext(LayoutContext);
 
   const handleFavoriteBtnClick = (e) => {
     e.stopPropagation();
-    setAsFavorite(!isFavorite);
+    // setAsFavorite(!isFavorite);
   };
 
   return (
@@ -19,9 +20,9 @@ export default function NotesListItem({}) {
       onClick={() => setNoteWindowOpen(!isNoteWindowOpen)}
     >
       <div className="w-11/12 text-left">
-        <h4 className="text-xl font-medium group-hover:text-white">Tasks for this week</h4>
+        <h4 className="text-xl font-medium group-hover:text-white">{title}</h4>
         <p className="inline-block w-11/12 overflow-hidden text-gray-600 whitespace-nowrap overflow-ellipsis hover:text-current group-hover:text-white">
-          #home ### Sunday * [] Go to the gr #home ### Sunday * [] Go to the gr
+          {text}
         </p>
       </div>
       <div className="flex justify-end w-1/12">
