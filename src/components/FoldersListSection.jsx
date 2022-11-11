@@ -3,6 +3,7 @@ import { FiFolder } from "react-icons/fi";
 import { AiOutlineStar } from "react-icons/ai";
 import FoldersListItem from "./FoldersListItem";
 import { FoldersContext } from "../context";
+import folderNames from "../folderNames";
 
 function FoldersListSection({}) {
   const [isFoldersSectionOpen] = useContext(FoldersContext);
@@ -13,8 +14,8 @@ function FoldersListSection({}) {
         isFoldersSectionOpen ? "left-0" : "-left-full"
       }`}
     >
-      <FoldersListItem title="All notes" IconComponent={<FiFolder className="w-5 h-5" />} />
-      <FoldersListItem title="Favorites" IconComponent={<AiOutlineStar className="w-5 h-5" />} />
+      <FoldersListItem title={folderNames.all} IconComponent={<FiFolder className="w-5 h-5" />} />
+      <FoldersListItem title={folderNames.favorites} IconComponent={<AiOutlineStar className="w-5 h-5" />} />
     </div>
   );
 }

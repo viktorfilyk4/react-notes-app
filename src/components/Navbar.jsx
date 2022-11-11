@@ -3,10 +3,11 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { FaSearch } from "react-icons/fa";
 import { MdPostAdd } from "react-icons/md";
 import { GrClose } from "react-icons/gr";
-import { FoldersContext } from "../context";
+import { FoldersContext, NotesContext } from "../context";
 
 function Navbar({}) {
   const [isFoldersSectionOpen, setFoldersSectionOpen] = useContext(FoldersContext);
+  const [showNotesOfFolder] = useContext(NotesContext);
 
   return (
     <div className="relative z-20 flex items-center justify-between w-full py-2 pl-2 pr-4 bg-white shadow">
@@ -17,7 +18,7 @@ function Navbar({}) {
         >
           <GiHamburgerMenu className={false ? `hidden` : ""} />
           <GrClose className={`${!false ? "hidden" : ""}`} />
-          <span className="hidden text-lg leading-4 lg:inline-block">All notes</span>
+          <span className="hidden text-lg leading-4 lg:inline-block">{showNotesOfFolder}</span>
         </button>
         <button className="p-3">
           <FaSearch />

@@ -1,14 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import NotesListItem from "./NotesListItem";
-import { NotesContext, FoldersContext } from "../context";
+import { NotesContext } from "../context";
 
 function NotesListSection() {
   const [notes, setNotes] = useState([]);
   const [showOnlyFavoriteNotes] = useContext(NotesContext);
-  // const [isFoldersSectionOpen] = useContext(FoldersContext);
 
   useEffect(() => {
-    console.log("useEffect");
     async function fetchNotes() {
       const notesList = await (await import("../notes")).default;
       setNotes(showOnlyFavoriteNotes ? notesList.filter((note) => note.isFavorite) : notesList);

@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { LayoutContext } from "../context";
 
 function RightSectionWrapper({ children }) {
-  const [isNoteWindowOpen] = useContext(LayoutContext);
+  const [[isNoteWindowOpen]] = useContext(LayoutContext);
   
   return (
     <div

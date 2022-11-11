@@ -2,12 +2,11 @@ import React, { useContext } from "react";
 import { NotesContext, FoldersContext } from "../context";
 
 export default function FoldersListItem({ IconComponent, title }) {
-  const [, setShowOnlyFavoriteNotes] = useContext(NotesContext);
+  const [showNotesOfFolder, setShowNotesOfFolder] = useContext(NotesContext);
   const [isFoldersSectionOpen, setFoldersSectionOpen] = useContext(FoldersContext);
 
   const handleClick = (title) => {
-    console.log("CLick on folder", title);
-    setShowOnlyFavoriteNotes(title === "Favorites" ? true : false);
+    setShowNotesOfFolder(title);
     setFoldersSectionOpen(!isFoldersSectionOpen);
   };
 
@@ -17,7 +16,7 @@ export default function FoldersListItem({ IconComponent, title }) {
       onClick={() => handleClick(title)}
     >
       {IconComponent}
-      <h3 className="">{title}</h3>
+      <h3>{title}</h3>
     </button>
   );
 }
