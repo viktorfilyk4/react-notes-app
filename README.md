@@ -3,6 +3,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).  
 
 To make this project work, you should install `Node version 16.20.2` (or try some lower versions).  
+*Use [NVM](https://github.com/nvm-sh/nvm) for node version management*
 
 For package management install `Yarn`.
 
